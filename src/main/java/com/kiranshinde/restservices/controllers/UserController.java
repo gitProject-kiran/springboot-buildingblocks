@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kiranshinde.restservices.entities.User;
+import com.kiranshinde.restservices.exceptions.UserNotFoundException;
 import com.kiranshinde.restservices.services.UserService;
 
 //Controller -
@@ -42,9 +43,9 @@ public class UserController {
 	
 	//getUserById
 	@GetMapping("/users/{id}")
-	public Optional<User> getUserById(@PathVariable("id") Long id){
-		return userService.getUserById(id);
-		
+	public Optional<User> getUserById(@PathVariable("id") Long id) throws UserNotFoundException{
+		Optional<User> user = userService.getUserById(id);		
+		return user;		
 	}
 	
 	//updateUserById

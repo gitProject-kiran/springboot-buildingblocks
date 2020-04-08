@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kiranshinde.restservices.entities.User;
+import com.kiranshinde.restservices.exceptions.UserNotFoundException;
 import com.kiranshinde.restservices.repositories.UserRepository;
 
 //Service
@@ -27,9 +28,13 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
-	//getUserById
-	public Optional<User> getUserById(Long id) {
+	//getUserByIds
+	public Optional<User> getUserById(Long id) throws UserNotFoundException{
 		Optional<User> user = userRepository.findById(id);		
+		if(!user.isPresent()) {
+			throw new UserNotFoundException("User not found!!");
+		}
+		
 		return user;
 	}
 
