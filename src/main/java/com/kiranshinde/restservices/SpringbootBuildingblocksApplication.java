@@ -3,7 +3,7 @@ package com.kiranshinde.restservices;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// Starting
+// Starting application
 @SpringBootApplication
 public class SpringbootBuildingblocksApplication {
 
